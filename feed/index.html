@@ -1,0 +1,23 @@
+---
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title type="text" xml:lang="en">iSeaData.com - The story of Seattle, with Data</title>
+    <link type="application/atom+xml" href="http://iseadata.com/feed/" rel="self"/>
+    <link type="text" href="http://iseadata.com" rel="alternate"/>
+    <updated>{{ site.time | date_to_xmlschema }}</updated>
+    <id>http://iseadata.com</id>
+    <author>
+        <name>Dev Nambi</name>
+    </author>
+    <rights>Copyright (c) 2017 Dev Nambi</rights>
+    {% for post in site.posts limit:100 %}
+    <entry>
+        <title>{{ post.title }}</title>
+        <link href="http://iseadata.com{{ post.url }}/"/>
+        <updated>{{ post.date | date_to_xmlschema }}</updated>
+        <id>http://iseadata.com{{ post.url }}/</id>
+        <summary type="html">{{ post.excerpt | xml_escape }}</summary>
+    </entry>
+    {% endfor %}
+</feed>
